@@ -2,6 +2,7 @@ import { useState } from "react";
 import useWorkoutsContext from "../hooks/useWorkoutsContext";
 
 const WorkoutForm = () => {
+    //we want the dispatch function
     const { dispatch } = useWorkoutsContext()
 
     const [title, setTitle] = useState('')
@@ -32,6 +33,8 @@ const WorkoutForm = () => {
             setReps('')
             setError(null)
             console.log('new workout added: ', json)
+            //the workoutsReducer sends back the payload and the existing workouts, so only the new workout is necessary here
+            //it's going to add the new workout to the global context state
             dispatch({ type: 'CREATE_WORKOUTS', payload: json })
         }
     }
